@@ -7,8 +7,6 @@ import Form from '@components/Form';
 
 const EditPrompt = () => {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const promptId = searchParams.get('id');
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({
         prompt: '',
@@ -18,6 +16,8 @@ const EditPrompt = () => {
 
     useEffect(() => {
         const getPromptDetails = async () => {
+            const searchParams = useSearchParams();
+            const promptId = searchParams.get('id');
             const response = await fetch(`/api/prompt/${promptId}`);
             const data = await response.json();
 
@@ -60,15 +60,13 @@ const EditPrompt = () => {
     }
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <Form
-                post={post}
-                type="Edit"
-                setPost={setPost}
-                submitting={submitting}
-                handleSubmit={UpdatePrompt}
-            />
-        </Suspense>
+        <Form
+            post={post}
+            type="Edit"
+            setPost={setPost}
+            submitting={submitting}
+            handleSubmit={UpdatePrompt}
+        />
     )
 }
 
