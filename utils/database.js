@@ -10,8 +10,6 @@ export const connectToDb = async () => {
         return;
     }
 
-
-
     try {
 
 
