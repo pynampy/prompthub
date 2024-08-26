@@ -15,8 +15,6 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     const [copied, setCopied] = useState("");
 
     const handleCopy = () => {
-        console.log(pathName)
-        console.log("Clicked");
         setCopied(post.prompt);
         navigator.clipboard.writeText(post.prompt);
         setTimeout(() => setCopied(""), 3000)
@@ -48,6 +46,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                         }
                         width={24}
                         height={24}
+                        alt="copy"
                     />
                 </div>
 
@@ -59,8 +58,6 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             >
                 #{post.tag}
             </p>
-            {console.log(session?.user.id)}
-            {console.log(post.creator._id)}
             {session?.user.id === post.creator._id &&
                 pathName === '/profile' && (
                     <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>

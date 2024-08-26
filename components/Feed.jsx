@@ -10,8 +10,24 @@ const Feed = () => {
 
     const [searchText, setSearchText] = useState('');
     const [posts, setPosts] = useState([]);
-    const handleSearchChange = (e) => {
 
+    const Search = async (searchText) => {
+        console.log("#####");
+        console.log(searchText);
+        const response = await fetch('/api/prompt', {
+            method: 'POST',
+            body: JSON.stringify({
+                searchText: searchText
+            })
+        });
+        const data = await response.json();
+        setPosts(data);
+    }
+
+
+    const handleSearchChange = (e) => {
+        setSearchText(e.target.value);
+        Search(e.target.value);
     }
 
     const PromptCardList = ({ data, handleTagClick }) => {
