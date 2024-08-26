@@ -1,6 +1,6 @@
-[] Implement Search
--   Search by prompt
--   Search by tag
--   Search by username
-[] Implement Click on tag
-[] Implement view other profiles
+A platform to share and view interesting AI Prompts from all around the world.
+
+Live Link : https://prompthub-kappa.vercel.app/
+
+Built using NextJs, TailwindCS & MongoDB.
+
