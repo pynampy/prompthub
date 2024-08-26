@@ -5,8 +5,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Form from '@components/Form';
 
 
-const EditPrompt = () => {
+const UpdatePrompt = () => {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const promptId = searchParams.get('id');
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({
         prompt: '',
@@ -16,8 +18,6 @@ const EditPrompt = () => {
 
     useEffect(() => {
         const getPromptDetails = async () => {
-            const searchParams = useSearchParams();
-            const promptId = searchParams.get('id');
             const response = await fetch(`/api/prompt/${promptId}`);
             const data = await response.json();
 
@@ -69,5 +69,13 @@ const EditPrompt = () => {
         />
     )
 }
+
+const EditPrompt = () => {
+    return <Suspense>
+        <UpdatePrompt />
+    </Suspense>
+}
+
+
 
 export default EditPrompt
