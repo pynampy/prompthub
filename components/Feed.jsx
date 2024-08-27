@@ -26,8 +26,14 @@ const Feed = () => {
 
 
     const handleSearchChange = (e) => {
-        setSearchText(e.target.value);
-        Search(e.target.value);
+        let value;
+        if (typeof e === 'string') {
+            value = e;
+        } else {
+            value = e.target.value;
+        }
+        setSearchText(value);
+        Search(value);
     }
 
     const PromptCardList = ({ data, handleTagClick }) => {
@@ -59,18 +65,17 @@ const Feed = () => {
             <form className='relative w-full flex-center'>
                 <input
                     type="text"
-                    placeholder='Search for a tag or a username'
+                    placeholder='Search for a tag or a Prompt'
                     value={searchText}
                     onChange={handleSearchChange}
                     required
                     className='search_input peer'
-
                 />
             </form>
 
             <PromptCardList
                 data={posts}
-                handleTagClick={() => { }}
+                handleTagClick={handleSearchChange}
             />
         </section>
     )

@@ -19,7 +19,6 @@ export const GET = async (request) => {
 
 export const POST = async (request) => {
     const data = await request.json();
-    // const { searchText } = await request.json();
     console.log(data.searchText)
     console.log("POST CALLED");
     try {
